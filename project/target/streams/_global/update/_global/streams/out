@@ -1,0 +1,5 @@
+[0m[[0m[0mdebug[0m] [0m[0mnot up to date. inChanged = true, force = false[0m
+[0m[[0m[0mdebug[0m] [0m[0mUpdating ProjectRef(uri("file:/home/chaki/Documentos/PROYECTOS/Woombat/Scala_projects/call_api_Spark_2.4.0/project/"), "call_api_spark_2-4-0-build")...[0m
+[0m[[0m[33mwarn[0m] [0m[0mUnrecognized repository Scala Plugin Bundled Repository, ignoring it[0m
+[0m[[0m[33mwarn[0m] [0m[0mUnrecognized repository Scala Plugin Bundled Repository, ignoring it[0m
+[0m[[0m[0mdebug[0m] [0m[0mDone updating ProjectRef(uri("file:/home/chaki/Documentos/PROYECTOS/Woombat/Scala_projects/call_api_Spark_2.4.0/project/"), "call_api_spark_2-4-0-build")[0m
