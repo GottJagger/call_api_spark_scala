@@ -24,7 +24,7 @@ object HttpApiExample {
     val df: DataFrame = spark.read.json(ds)
     df.show(false)
     // Aplica una UDF al DataFrame
-
+//change
     //agregar un uno
     val addOne = udf((x: Int) => x + 1)
     val dfWithNewColumn = df.withColumn("messagePlusOne", addOne(col("message")))
