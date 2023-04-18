@@ -1,0 +1,7 @@
+[0m[[0m[0mdebug[0m] [0m[0mPackaging /home/chaki/Documentos/PROYECTOS/Woombat/Scala_projects/call_api_Spark_2.4.0/target/scala-2.12/call_api_spark_2-4-0_2.12-0.1.0-SNAPSHOT.jar ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mInput file mappings:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	HttpApiExample.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/chaki/Documentos/PROYECTOS/Woombat/Scala_projects/call_api_Spark_2.4.0/target/scala-2.12/classes/HttpApiExample.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	HttpApiExample$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/chaki/Documentos/PROYECTOS/Woombat/Scala_projects/call_api_Spark_2.4.0/target/scala-2.12/classes/HttpApiExample$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0mDone packaging.[0m
