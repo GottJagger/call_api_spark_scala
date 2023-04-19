@@ -17,10 +17,12 @@ object httpRequest{
       .header("Content-Type", "application/json")
       .param("message", message)
       .postData(jsonObject.toString)
+      .method("GET")
       .asString
-
+    println("Metodo GET request enviada del cliente")
     // Imprime la respuesta del servidor
     println(response.body)
+
   }
   // Funcion post para realizar el request al servidor(API)
   def postToApi(url: String, message: String, inputDf: DataFrame): Unit = {
@@ -36,8 +38,11 @@ object httpRequest{
       .param("message", message)
       .method("POST")
       .asString
+    println("Metodo POST request enviada del cliente")
+
 
     // Imprime la respuesta del servidor
     println(response.body)
+
   }
 }

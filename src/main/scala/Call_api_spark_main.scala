@@ -1,5 +1,5 @@
 import org.apache.spark.sql.SparkSession
-class Call_api_spark_main {
+object Call_api_spark_main {
   def main(args: Array[String]): Unit =  {
     val spark = SparkSession.builder()
       .master("local")
@@ -13,30 +13,30 @@ class Call_api_spark_main {
       ("Peter", 45)
     ).toDF("name", "age")
 
-    val url = "http://localhost:8080/mi_api"
+    //parametros de entrada
+    val url = "https://us-central1-wb-streaming-2.cloudfunctions.net/open_4"
     val messageGet = "Hello from GET request!"
     val messagePost = "Hello from POST request!"
 
+    //transformaciones al df
     val dfWithSaysColumn = Transformaciones_udf.addSaysColumn(df, "name", "Hola")
     val dfWithRenamedColumn = Transformaciones_udf.renameColumn(dfWithSaysColumn, "age", "edad")
 
     println("DF original:")
     df.show()
 
-    println("DF con columna 'name with Hola Says':")
+    println("DF con columna 'columna name con jose dice Hola':")
     dfWithSaysColumn.show()
 
     println("DF con columna renombrada:")
     dfWithRenamedColumn.show()
 
-    val responseGet = httpRequest.getFromApi(url, messageGet, dfWithRenamedColumn)
-    println("Respuesta de GET request:")
-    println(responseGet)
+    httpRequest.postToApi(url, messagePost, dfWithRenamedColumn)
 
-    val responsePost = httpRequest.postToApi(url, messagePost, dfWithRenamedColumn)
-    println("Respuesta de POST request:")
-    println(responsePost)
 
+    //cantidad de mensaje
+    //cuantos se guardaron
+    //latencia
   }
 }
 

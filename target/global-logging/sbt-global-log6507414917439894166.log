@@ -1,7 +1,7 @@
 [0m[[0m[0mdebug[0m] [0m[0m> Exec(compile, None, None)[0m
 [0m[[0m[0mdebug[0m] [0m[0mEvaluating tasks: Compile / compile[0m
 [0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
-[0m[[0m[0minfo[0m] [0m[0mcompiling 4 Scala sources to /home/chaki/Documentos/PROYECTOS/Woombat/Scala_projects/call_api_Spark_2.4.0/target/scala-2.12/classes ...[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 1 Scala source to /home/chaki/Documentos/PROYECTOS/Woombat/Scala_projects/call_api_Spark_2.4.0/target/scala-2.12/classes ...[0m
 [0m[[0m[0minfo[0m] [0m[0mdone compiling[0m
-[0m[[0m[32msuccess[0m] [0m[0mTotal time: 9 s, completed 18/04/2023 03:31:16 PM[0m
+[0m[[0m[32msuccess[0m] [0m[0mTotal time: 2 s, completed 18/04/2023 03:57:52 PM[0m
 [0m[[0m[0mdebug[0m] [0m[0m> Exec(idea-shell, None, None)[0m
