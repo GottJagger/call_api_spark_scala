@@ -45,4 +45,46 @@ object httpRequest{
     println(response.body)
 
   }
+
+
+  def postToApi1(url: String, inputDf: DataFrame, inputjson: String): Unit = {
+    var jsonDf = ""
+    var jsonMetricas = ""
+    val mapper = new ObjectMapper().registerModule(DefaultScalaModule)
+    var DataJson =""
+    if (inputjson == null) {
+      // Si inputjson es nulo, convierte inputDf a JSON
+      jsonDf = inputDf.toJSON.collect.mkString("[", ",", "]")
+      val DataJson = mapper.readTree(jsonDf)
+    } else if(inputDf==null) {
+      // Si inputjson no es nulo, utiliza su valor
+      jsonMetricas = inputjson
+      val DataJson = mapper.readTree(jsonMetricas)
+    }else if(inputjson!=null && inputDf!=null){
+      jsonDf = inputDf.toJSON.collect.mkString("[", ",", "]")
+      jsonMetricas = inputjson
+      val jsonObjectDf = mapper.readTree(jsonDf)
+      val jsonObjectMetricas = mapper.readTree(inputjson)
+      val jsonNode = mapper.createObjectNode()
+
+      jsonNode.set("jsonMetricas", jsonObjectMetricas)
+      jsonNode.set("jsonDf", jsonObjectDf)
+      DataJson=jsonNode.toString
+    }else {
+      // Si ambos inputjson e inputDf son nulos, muestra un mensaje de error y sale del método
+      println("Error: No se proporcionó ningún dato para enviar.")
+      return
+    }
+
+    // Realiza una solicitud POST a la API con el JSON como cuerpo
+    val response: HttpResponse[String] = Http(url)
+      .header("Content-Type", "application/json")
+      .postData(DataJson)
+      .method("POST")
+      .asString
+    println("Método POST request enviada del cliente")
+
+    // Imprime la respuesta del servidor
+    println(response.body)
+  }
 }

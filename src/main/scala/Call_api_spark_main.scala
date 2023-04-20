@@ -34,9 +34,7 @@ object Call_api_spark_main {
     httpRequest.postToApi(url, messagePost, dfWithRenamedColumn)
 
 
-    //cantidad de mensaje
-    //cuantos se guardaron
-    //latencia
+
   }
 }
 
