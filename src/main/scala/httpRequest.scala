@@ -3,6 +3,8 @@ import scalaj.http.{Http, HttpResponse}
 import com.fasterxml.jackson.module.scala.DefaultScalaModule
 import com.fasterxml.jackson.databind.ObjectMapper
 import org.apache.spark.sql.DataFrame
+import org.json4s._
+import org.json4s.jackson.JsonMethods._
 
 object httpRequest{
   // Funcion get para realizar el request al servidor(API)
@@ -40,8 +42,8 @@ object httpRequest{
       return
     }
 
-    // Si se proporciona inputDf, crea un nodo JSON adicional para el JSON del DataFrame
-    if (inputDf != null) {
+    val postData = if (inputDf != null) {
+      // Si se proporciona inputDf, crea un nodo JSON adicional para el JSON del DataFrame
       val jsonDf = inputDf.toJSON.collect.mkString("[", ",", "]")
       val jsonObjectDf = new ObjectMapper().registerModule(DefaultScalaModule).readTree(jsonDf)
       val jsonNode = new ObjectMapper().createObjectNode()
@@ -55,7 +57,7 @@ object httpRequest{
     // Realiza una solicitud POST a la API con el JSON como cuerpo
     val response: HttpResponse[String] = Http(url)
       .header("Content-Type", "application/json")
-      .postData(DataJson)
+      .postData(postData)
       .method("POST")
       .asString
     println("Método POST request enviada del cliente")
@@ -63,4 +65,5 @@ object httpRequest{
     // Imprime la respuesta del servidor
     println(response.body)
   }
+
 }

@@ -1,4 +1,7 @@
 import org.apache.spark.sql.SparkSession
+import org.json4s._
+import org.json4s.jackson.JsonMethods._
+
 object Call_api_spark_main {
   def main(args: Array[String]): Unit =  {
     val spark = SparkSession.builder()
@@ -13,10 +16,20 @@ object Call_api_spark_main {
       ("Peter", 45)
     ).toDF("name", "age")
 
+    val cantidadLogs = 100
+    val latencia = 20.5
+    val cantidadGuardado = 50
+
+    val json = JObject(
+      "cantidadLogs" -> JInt(cantidadLogs),
+      "Latencia" -> JDouble(latencia),
+      "cantidadGuardado" -> JInt(cantidadGuardado)
+    )
+    val jsonString = compact(render(json))
+
     //parametros de entrada
-    val url = "https://us-central1-wb-streaming-2.cloudfunctions.net/open_4"
-    val messageGet = "Hello from GET request!"
-    val messagePost = "Hello from POST request!"
+    val url1 = "http://127.0.0.1:5000/mi_api"
+    val url2 = "https://us-central1-wb-streaming-2.cloudfunctions.net/prueba_conexion_3"
 
     //transformaciones al df
     val dfWithSaysColumn = Transformaciones_udf.addSaysColumn(df, "name", "Hola")
@@ -31,10 +44,7 @@ object Call_api_spark_main {
     println("DF con columna renombrada:")
     dfWithRenamedColumn.show()
 
-    httpRequest.postToApi(url, messagePost, dfWithRenamedColumn)
-
-
-
+    httpRequest.postToApi(url2,null,jsonString)
   }
 }
 
