@@ -28,7 +28,7 @@ object Call_api_spark_main {
     val jsonString = compact(render(json))
 
     //parametros de entrada
-    val url1 = "http://127.0.0.1:5000/mi_api"
+    val url1 = "http://127.0.0.1:8080/mi_api"
     val url2 = "https://us-central1-wb-streaming-2.cloudfunctions.net/prueba_conexion_3"
 
     //transformaciones al df
@@ -44,7 +44,7 @@ object Call_api_spark_main {
     println("DF con columna renombrada:")
     dfWithRenamedColumn.show()
 
-    httpRequest.postToApi(url2,null,jsonString)
+    httpRequest.postToApi(url1,dfWithRenamedColumn,null)
   }
 }
 
