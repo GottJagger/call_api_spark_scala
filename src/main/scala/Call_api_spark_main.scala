@@ -44,7 +44,7 @@ object Call_api_spark_main {
     println("DF con columna renombrada:")
     dfWithRenamedColumn.show()
 
-    httpRequest.postToApi(url1,dfWithRenamedColumn,null)
+    httpRequest.postToApi(url1,null,jsonString)
   }
 }
 

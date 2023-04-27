@@ -42,7 +42,7 @@ object httpRequest{
       return
     }
 
-    val postData = if (inputDf != null) {
+    val postData = if (inputDf != null && inputjson != null) {
       // Si se proporciona inputDf, crea un nodo JSON adicional para el JSON del DataFrame
       val jsonDf = inputDf.toJSON.collect.mkString("[", ",", "]")
       val jsonObjectDf = new ObjectMapper().registerModule(DefaultScalaModule).readTree(jsonDf)
@@ -50,8 +50,14 @@ object httpRequest{
       jsonNode.set("jsonMetricas", DataJson)
       jsonNode.set("jsonDf", jsonObjectDf)
       jsonNode.toString
-    } else {
+    } else if(inputjson == null){
+      val jsonDf = inputDf.toJSON.collect.mkString("[", ",", "]")
+      val jsonObjectDf = new ObjectMapper().registerModule(DefaultScalaModule).readTree(jsonDf)
+      jsonObjectDf.toString
+
+    }else{
       DataJson.toString
+
     }
 
     // Realiza una solicitud POST a la API con el JSON como cuerpo
